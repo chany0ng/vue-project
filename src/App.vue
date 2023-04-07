@@ -1,9 +1,5 @@
 <template>
-  <!-- <h1>hello my name is {{ user.name }}</h1>
-  <input type="text" v-model="user.name" /> -->
-  <h2 v-if="showName">My name is {{ user.name }}</h2>
-  <h2 v-else>이름을 보여줄 수 없습니다.</h2>
-  <h2 v-if="user.age > 20">당신은 성인입니다.</h2>
+  <h1>main에서도 무엇인가 바뀐게 있어야지 안그래?</h1>
 </template>
 
 <script>
