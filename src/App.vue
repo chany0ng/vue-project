@@ -1,7 +1,19 @@
 <template>
-  <h2>나이: {{ add(5) }}</h2>
-  <h2>나이: {{ add(10) }}</h2>
-  <h2>나이: {{ add(15) }}</h2>
+  <h1>Hello {{ name }}!</h1>
+  <button v-on:click="changeName">change name</button>
+  <button v-on:mouseover="name = 'code sibal'" v-on:mouseleave="changeName">
+    change name
+  </button>
+  <a
+    v-on:click.prevent="movePage"
+    href="http://www.naver.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    >네이버로 가자</a
+  >
+  <h2>{{ number }}</h2>
+  <button v-on:click="number += 1">숫자증가</button>
+  <button v-on:click="number -= 1">숫자감소</button>
 </template>
 
 <script>
@@ -9,13 +21,17 @@ export default {
   name: "App",
   data() {
     return {
-      age: 10,
+      name: "chanyong",
+      number: 0,
     };
   },
   methods: {
-    add(num) {
-      console.log(num);
-      return this.age + num;
+    changeName() {
+      this.name = "Code chanyong";
+    },
+    movePage() {
+      const check = confirm("페이지를 이동할거?");
+      if (check) console.log("tlqkf");
     },
   },
 };
@@ -29,5 +45,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+a {
+  font-size: 24px;
+  display: block;
+  text-decoration: none;
 }
 </style>
