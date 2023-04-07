@@ -1,16 +1,7 @@
 <template>
-<<<<<<< HEAD
-  <div>이런시발 ㅋㅋ</div>
-=======
-  <ul>
-    <!-- template태그는 불필요한 DOM을 생성하지 않는다. -->
-    <template v-for="(city, index) of cities" v-bind:key="index">
-      <li v-if="city.province === '경상도'">
-        {{ city.name }}
-      </li>
-    </template>
-  </ul>
->>>>>>> f1a8820 (조건부 리스트 렌더링)
+  <h2 v-if="showName">My name is {{ user.name }}</h2>
+  <h2 v-else>이름을 보여줄 수 없습니다.</h2>
+  <h2 v-if="user.age > 20">당신은 성인입니다.</h2>
 </template>
 
 <script>
@@ -20,17 +11,6 @@ export default {
 <<<<<<< HEAD
     return {};
 =======
-    return {
-      cities: [
-        { name: "서울", province: "경기도" },
-        { name: "대전", province: "충청도" },
-        { name: "인천", province: "경기도" },
-        { name: "대구", province: "경상도" },
-        { name: "부산", province: "경상도" },
-        { name: "광주", province: "전라도" },
-        { name: "제주", province: "제주도" },
-      ],
-    };
 >>>>>>> f1a8820 (조건부 리스트 렌더링)
   },
 };
