@@ -1,28 +1,30 @@
 <template>
-  <ProductList :products="products" />
+  <h1>Hello guys!</h1>
+  <button @click="displayDetail = !displayDetail">show detail</button>
+  <DetailView v-if="displayDetail" @closeDetail="close" @sendData="showData" />
 </template>
 
 <script>
-// import GreetingUser from "./components/GreetingUser.vue";
-import ProductList from "./components/ProductList.vue";
+import DetailView from "./components/DetailView.vue";
 export default {
   name: "App",
   data() {
     return {
-      products: [
-        { id: 1, name: "TV", price: 500000, company: "LG" },
-        { id: 2, name: "전자레인지", price: 100000, company: "삼성" },
-        { id: 3, name: "오븐", price: 200000, company: "한화" },
-        { id: 4, name: "냉장고", price: 1000000, company: "대우" },
-        { id: 5, name: "에어컨", price: 2000000, company: "해태" },
-      ],
+      displayDetail: false,
     };
   },
   computed: {},
   directives: {},
-  methods: {},
+  methods: {
+    close() {
+      this.displayDetail = false;
+    },
+    showData(data) {
+      console.log(data);
+    },
+  },
   watch: {},
-  components: { ProductList },
+  components: { DetailView },
 };
 </script>
 
