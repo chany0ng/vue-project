@@ -1,39 +1,28 @@
 <template>
-  <h1>watchers</h1>
-  <h2>Current money: {{ money }}</h2>
-  <div>
-    <button @click="money += 100">earn money</button>
-    <button @click="money -= 100">spend money</button>
-  </div>
-  <h3>{{ receipt }}</h3>
-  <button @click="receipt.food += 500">buy food</button>
+  <ProductList :products="products" />
 </template>
 
 <script>
+// import GreetingUser from "./components/GreetingUser.vue";
+import ProductList from "./components/ProductList.vue";
 export default {
   name: "App",
   data() {
     return {
-      userName: "ChanYong",
-      money: 0,
-      receipt: {
-        food: 3000,
-        fee: 2000,
-        fare: 10000,
-      },
+      products: [
+        { id: 1, name: "TV", price: 500000, company: "LG" },
+        { id: 2, name: "전자레인지", price: 100000, company: "삼성" },
+        { id: 3, name: "오븐", price: 200000, company: "한화" },
+        { id: 4, name: "냉장고", price: 1000000, company: "대우" },
+        { id: 5, name: "에어컨", price: 2000000, company: "해태" },
+      ],
     };
   },
   computed: {},
   directives: {},
   methods: {},
-  watch: {
-    receipt: {
-      handler(newValue) {
-        console.log("영수증 값 변화: ", newValue);
-      },
-      deep: true,
-    },
-  },
+  watch: {},
+  components: { ProductList },
 };
 </script>
 
