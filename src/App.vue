@@ -1,28 +1,48 @@
 <template>
-  <ProductList :products="products" />
+  <div>{{ todos }}</div>
+  <br />
+  <form @submit.prevent="addTodo()">
+    <label for="todo"
+      >새로운 할 일 입력
+      <hr
+    /></label>
+    <input type="text" id="todo" v-model="newTodo" />
+    <button>추가</button>
+  </form>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      <input type="checkbox" v-model="todo.done" />
+      <span :class="{ done: todo.done }"> {{ todo.text }} </span>
+      <button @click="removeTodo(todo)">삭제</button>
+    </li>
+  </ul>
 </template>
 
 <script>
-// import GreetingUser from "./components/GreetingUser.vue";
-import ProductList from "./components/ProductList.vue";
+let id = 0;
 export default {
   name: "App",
   data() {
     return {
-      products: [
-        { id: 1, name: "TV", price: 500000, company: "LG" },
-        { id: 2, name: "전자레인지", price: 100000, company: "삼성" },
-        { id: 3, name: "오븐", price: 200000, company: "한화" },
-        { id: 4, name: "냉장고", price: 1000000, company: "대우" },
-        { id: 5, name: "에어컨", price: 2000000, company: "해태" },
-      ],
+      newTodo: "",
+      todos: [],
     };
   },
   computed: {},
   directives: {},
-  methods: {},
+  methods: {
+    addTodo() {
+      this.todos.push({ id: id++, text: `${this.newTodo}`, done: false });
+      this.newTodo = "";
+    },
+    removeTodo(todo) {
+      this.todos = this.todos.filter((c) => {
+        return c !== todo;
+      });
+    },
+  },
   watch: {},
-  components: { ProductList },
+  components: {},
 };
 </script>
 
@@ -31,21 +51,15 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
   margin-top: 60px;
 }
-a {
-  font-size: 24px;
-  display: block;
-  text-decoration: none;
+input {
+  margin-right: 10px;
 }
-label {
-  font-size: 22px;
-  font-weight: bold;
-  margin-right: 1rem;
-}
-div {
-  margin-bottom: 1rem;
+.done {
+  text-decoration: line-through;
+  opacity: 0.8;
 }
 </style>
