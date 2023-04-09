@@ -1,35 +1,34 @@
 <template>
-  <h2>Hello components!</h2>
-  <button @click="activeTab = 'Menu1'">Menu1</button>
-  <button @click="activeTab = 'Menu2'">Menu2</button>
-  <button @click="activeTab = 'Menu3'">Menu3</button>
-  <keep-alive>
-    <component :is="activeTab"></component>
-  </keep-alive>
+  <div>
+    <h2>Hello Slots!</h2>
+    <CardView> Hello Slot!!! </CardView>
+    <CardView>
+      <img src="https://placeimg.com/100/50/any" alt="random" />
+    </CardView>
+    <CardView>
+      <ul>
+        <li>짬뽕</li>
+        <li>짜장</li>
+      </ul>
+    </CardView>
+  </div>
 </template>
 
 <script>
-import Menu1 from "./components/tabitems/Menu1.vue";
-import Menu2 from "./components/tabitems/Menu2.vue";
-import Menu3 from "./components/tabitems/Menu3.vue";
+import CardView from "./components/slot/CardView.vue";
 export default {
   name: "App",
   data() {
-    return {
-      username: "scalper",
-      activeTab: "Menu1",
-    };
+    return {};
   },
   provide() {
-    return {
-      name: this.username,
-    };
+    return {};
   },
   computed: {},
   directives: {},
   methods: {},
   watch: {},
-  components: { Menu1, Menu2, Menu3 },
+  components: { CardView },
 };
 </script>
 
