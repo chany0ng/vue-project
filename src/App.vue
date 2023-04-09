@@ -10,12 +10,17 @@
     <button>추가</button>
   </form>
   <ul>
-    <li v-for="todo in todos" :key="todo.id">
+    <li v-for="todo in filterTodo" :key="todo.id">
       <input type="checkbox" v-model="todo.done" />
       <span :class="{ done: todo.done }"> {{ todo.text }} </span>
       <button @click="removeTodo(todo)">삭제</button>
     </li>
   </ul>
+
+  <button @click="hideTodo = !hideTodo">
+    {{ hideTodo ? "Show all" : "Hide already completed" }}
+    {{ hideTodo }}
+  </button>
 </template>
 
 <script>
@@ -26,9 +31,14 @@ export default {
     return {
       newTodo: "",
       todos: [],
+      hideTodo: false,
     };
   },
-  computed: {},
+  computed: {
+    filterTodo() {
+      return this.hideTodo ? this.todos.filter((t) => !t.done) : this.todos;
+    },
+  },
   directives: {},
   methods: {
     addTodo() {
